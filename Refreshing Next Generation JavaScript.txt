@@ -1,0 +1,57 @@
+Refreshing Next Generation JavaScript
+
+let and const
+
+	use let for variable values (replacement for var)
+
+	use const for variables that dont change. (constant variable)
+
+Arrow Functions
+
+	const myFnc = () => {
+		// no more issues with this.
+	}
+
+Exports & Imports
+
+	const person = {
+		name: 'Max'
+	}
+
+	export default person
+
+	export const clean = () => {...}
+	export const baseDate = 10;
+
+	import person from './pseson.js'
+	import { baseData, clean } from './utility.js'
+
+Classes
+
+	properties are like variables to classes
+	methods are like functions attached to classes
+
+	es6: constructor() { this.myProperty = 'value' }
+	es7: myProperty = 'value'
+
+	es6: myMethod() = {...}
+	es7: myMethod = () => {...}
+
+Spread & Rest Operator
+	"..."
+
+	Spread
+		const newArray = [...oldArray, 1,2]
+		const newObject = {...oldObject, newProp:5}
+
+	Rest
+		function sortArgs(...args){
+			return args.sort();
+		}
+
+Destructuring
+	Easily extract array elements or object properties and store them in variables
+
+	[a, b] = ['Hello', 'Max']
+	{name} = {name:'Max', age:28}
+
