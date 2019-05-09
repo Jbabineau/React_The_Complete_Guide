@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person.js'
 
+
 class App extends Component {
   /*const [ personsState, setPersonsState ] = useState({
     persons: [
@@ -57,12 +58,13 @@ class App extends Component {
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
-    this.setState({person : persons});
+    this.setState({persons : persons});
   }
 
   render () {
     const buttonStyle = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -83,19 +85,29 @@ class App extends Component {
             changed={(event) => this.nameChangedHandler(event, person.id)}/>
         })}
       </div> 
-      )
+      );
+      buttonStyle.backgroundColor = 'red';
+    }
+
+    let classes = [];
+    if(this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+
+    if(this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a react app</h1>
-        <p>This is really working!!!</p>
-        <button 
-          onClick={this.togglePersonsHandler}
-          style={buttonStyle}
-        >Toggle Persons</button>
-        {persons}
-      </div>
+        <div className="App">
+          <h1>Hi, I'm a react app</h1>
+          <p className={classes.join(' ')}>This is really working!!!</p>
+          <button 
+            onClick={this.togglePersonsHandler}
+            style={buttonStyle}
+          >Toggle Persons</button>
+          {persons}
+        </div>
     );
   }
 };
