@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import Person from './Person/Person.js'
+import classes from './App.css';
+import Person from './Person/Person.js';
+import ErrorBoundry from './ErrorBoundry/ErrorBoundry';
 
 
 class App extends Component {
@@ -62,49 +63,42 @@ class App extends Component {
   }
 
   render () {
-    const buttonStyle = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
     let persons = null;
+    let btnClass = '';
 
     if(this.state.showPersons) {
       persons = (
-      <div >
+      <div>
         {this.state.persons.map((person, index) => {
-          return <Person 
-            click={() => this.deletePersonHandler(index)}
-            name={person.name}
-            age={person.age}
-            key={person.id}
-            changed={(event) => this.nameChangedHandler(event, person.id)}/>
+          return <ErrorBoundry key={person.id}>
+              <Person 
+              click={() => this.deletePersonHandler(index)}
+              name={person.name}
+              age={person.age}
+              changed={(event) => this.nameChangedHandler(event, person.id)}/>
+            </ErrorBoundry>
         })}
       </div> 
       );
-      buttonStyle.backgroundColor = 'red';
+      btnClass = classes.Red;
     }
 
-    let classes = [];
+    let classesList = [];
     if(this.state.persons.length <= 2) {
-      classes.push('red');
+      classesList.push(classes.red);
     }
 
     if(this.state.persons.length <= 1) {
-      classes.push('bold');
+      classesList.push(classes.bold);
     }
 
     return (
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I'm a react app</h1>
-          <p className={classes.join(' ')}>This is really working!!!</p>
+          <p className={classesList.join(' ')}>This is really working!!!</p>
           <button 
+          className = {btnClass}
             onClick={this.togglePersonsHandler}
-            style={buttonStyle}
           >Toggle Persons</button>
           {persons}
         </div>
