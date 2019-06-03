@@ -29,7 +29,7 @@ class BurgerBuilder extends Component {
     }
 
     addIngredientHandler = (type) => {
-        console.log('In added: ' + type);
+        //console.log('In added: ' + type);
         const oldCount = this.state.ingredients[type];
         const updatedCount = oldCount + 1;
         const updatedIngredients = {
@@ -46,7 +46,7 @@ class BurgerBuilder extends Component {
     }
 
     removeIngredientHandler = (type) => {
-        console.log('In removed: ' + type);
+        //console.log('In removed: ' + type);
         const oldCount = this.state.ingredients[type];
         const updatedCount = oldCount > 0 ? oldCount - 1 : 0;
         const updatedIngredients = {
@@ -76,7 +76,8 @@ class BurgerBuilder extends Component {
                 <BuildControls 
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disabledInfo}/>
+                    disabled={disabledInfo}
+                    price={this.state.totalPrice}/>
             </Aux>
         );
     }
