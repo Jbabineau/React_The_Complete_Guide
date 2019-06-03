@@ -10,8 +10,6 @@ const OrderSummary = (props) => {
                     </li>);
         });
 
-    //<li>type: amount</li>
-
     return (
         <Aux>
             <h3>Your Order:</h3>
