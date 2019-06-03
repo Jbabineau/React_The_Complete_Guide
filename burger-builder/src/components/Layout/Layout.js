@@ -3,8 +3,6 @@ import Aux from '../../hoc/Aux';
 
 import classes from './Layout.css';
 
-
-
 const layout = (props) => (
 
     <Aux>
