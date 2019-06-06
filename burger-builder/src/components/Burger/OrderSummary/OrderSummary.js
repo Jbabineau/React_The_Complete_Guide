@@ -34,7 +34,7 @@ class OrderSummary extends Component {
                 </Button>
                 <Button
                     buttonType='Success'
-                    clicked={this.props.ourchaseContinued}
+                    clicked={this.props.purchaseContinued}
                 >
                     CONTINUE
                 </Button>
